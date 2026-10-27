@@ -1,0 +1,7 @@
+# CHAPTER 1 Pipeline Overview
+Welcome to the autonomous AI video studio, | where code and narration come together.
+Every graphic is rendered programmatically, | synchronized with crystal-clear audio.
+
+# CHAPTER 2 Audio and Motion Sync
+Text-to-speech voiceovers generate precise timestamps, | aligning subtitles down to the exact frame.
+From concept to finished MP4 video, | the entire workflow runs completely in code.

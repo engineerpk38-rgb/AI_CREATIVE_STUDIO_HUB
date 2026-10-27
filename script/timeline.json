@@ -1,0 +1,110 @@
+{
+ "fps": 30,
+ "total_frames": 890,
+ "engine": "edge",
+ "voice": "en-US-ChristopherNeural",
+ "rate": "+0%",
+ "gap": 10,
+ "para_gap": 20,
+ "chapter_gap": 45,
+ "lead": 40,
+ "tail": 90,
+ "lang": "en",
+ "chapters": [
+  {
+   "n": 1,
+   "title": "Pipeline Overview",
+   "from": 86
+  },
+  {
+   "n": 2,
+   "title": "Audio and Motion Sync",
+   "from": 439
+  }
+ ],
+ "sentences": [
+  {
+   "id": "S01",
+   "chapter": 1,
+   "from": 86,
+   "to": 236,
+   "text": "Welcome to the autonomous AI video studio, where code and narration come together.",
+   "para": false,
+   "subs": [
+    {
+     "from": 86,
+     "to": 169,
+     "text": "Welcome to the autonomous AI video studio,"
+    },
+    {
+     "from": 170,
+     "to": 236,
+     "text": "where code and narration come together."
+    }
+   ]
+  },
+  {
+   "id": "S02",
+   "chapter": 1,
+   "from": 247,
+   "to": 383,
+   "text": "Every graphic is rendered programmatically, synchronized with crystal-clear audio.",
+   "para": true,
+   "subs": [
+    {
+     "from": 247,
+     "to": 318,
+     "text": "Every graphic is rendered programmatically,"
+    },
+    {
+     "from": 319,
+     "to": 383,
+     "text": "synchronized with crystal-clear audio."
+    }
+   ]
+  },
+  {
+   "id": "S03",
+   "chapter": 2,
+   "from": 439,
+   "to": 618,
+   "text": "Text-to-speech voiceovers generate precise timestamps, aligning subtitles down to the exact frame.",
+   "para": false,
+   "subs": [
+    {
+     "from": 439,
+     "to": 539,
+     "text": "Text-to-speech voiceovers generate precise timestamps,"
+    },
+    {
+     "from": 540,
+     "to": 618,
+     "text": "aligning subtitles down to the exact frame."
+    }
+   ]
+  },
+  {
+   "id": "S04",
+   "chapter": 2,
+   "from": 629,
+   "to": 790,
+   "text": "From concept to finished MP4 video, the entire workflow runs completely in code.",
+   "para": true,
+   "subs": [
+    {
+     "from": 629,
+     "to": 708,
+     "text": "From concept to finished MP4 video,"
+    },
+    {
+     "from": 709,
+     "to": 790,
+     "text": "the entire workflow runs completely in code."
+    }
+   ]
+  }
+ ],
+ "chars": 288,
+ "words": 47,
+ "speech_sec": 20.98
+}
