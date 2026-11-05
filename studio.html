@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b13">
+  <title>AI Creative Studio — Local Workflow</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b0b13;--panel:#131320;--panel2:#19192a;--line:#29283e;--text:#f4f1ff;--muted:#a19db6;--purple:#9b79ff;--green:#57d69a;--red:#ff7188;--amber:#f5c66d}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -20%,#2a1b50 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+    main{max-width:1120px;margin:0 auto;padding:32px 22px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:26px}.brand{display:flex;gap:14px;align-items:center}.icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(140deg,#a16cff,#5140c8);display:grid;place-items:center;font-size:23px}.eyebrow{color:#c0aaff;text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:700}.top h1{font-size:25px;margin:1px 0}.sub{color:var(--muted);font-size:13px}.badge{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:8px 12px}.dot{width:8px;height:8px;border-radius:50%;background:#777}.dot.ok{background:var(--green);box-shadow:0 0 12px #57d69a88}.grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);gap:18px}.card{background:linear-gradient(150deg,#171725,#11111b);border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:0 12px 40px #0002}.card h2{margin:0 0 6px;font-size:17px}.hint{color:var(--muted);font-size:13px;margin:0 0 16px}.field{display:flex;flex-direction:column;gap:7px;margin:14px 0}.field label{font-size:12px;color:#c5c0d8;font-weight:600}select,textarea{width:100%;border:1px solid #33314b;background:#0c0c14;color:var(--text);border-radius:10px;padding:11px 12px;font:inherit}textarea{min-height:300px;resize:vertical;font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace}.row{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--panel2);color:var(--text);font:600 13px system-ui;cursor:pointer;transition:.15s}.btn:hover:not(:disabled){filter:brightness(1.2);transform:translateY(-1px)}.btn:disabled{opacity:.45;cursor:not-allowed}.primary{background:linear-gradient(130deg,#875bea,#6046ce);border-color:#9c7af2}.quiet{background:transparent}.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.action{padding:13px 10px;text-align:left}.action strong{display:block;font-size:13px}.action span{display:block;color:var(--muted);font-size:11px;font-weight:400;margin-top:3px}.steps{display:grid;gap:9px;margin:16px 0}.step{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:#0d0d16;border-radius:10px;padding:10px 12px;font-size:12px}.state{font-size:11px;color:var(--muted)}.state.ready{color:var(--green)}.state.missing{color:var(--amber)}.job{margin-top:16px;padding:12px;border:1px solid var(--line);border-radius:11px;background:#0c0c14;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px}.job-status{color:var(--muted)}.job-status.running{color:var(--amber)}.job-status.success{color:var(--green)}.job-status.failed{color:var(--red)}.log{margin-top:14px;background:#08080e;border:1px solid var(--line);border-radius:11px;min-height:145px;max-height:250px;overflow:auto;padding:12px;font:11px/1.6 ui-monospace,monospace;color:#c4bfd4;white-space:pre-wrap;overflow-wrap:anywhere}.preview{margin-top:16px}.preview video{width:100%;max-height:280px;background:#050508;border:1px solid var(--line);border-radius:10px}.notice{margin:14px 0 0;min-height:20px;color:var(--muted);font-size:12px}.notice.error{color:var(--red)}.notice.success{color:var(--green)}.foot{color:#817d94;font-size:11px;margin:18px 2px 0}.spin{display:inline-block;width:11px;height:11px;border:2px solid #666;border-top-color:var(--amber);border-radius:50%;animation:spin .7s linear infinite;margin-right:6px}@keyframes spin{to{transform:rotate(360deg)}}
+    @media(max-width:780px){main{padding:20px 14px}.grid{grid-template-columns:1fr}.top{align-items:flex-start}.badge{display:none}.actions{grid-template-columns:1fr}.action{text-align:center}}
+  </style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <div class="brand"><div class="icon" aria-hidden="true">🎬</div><div><div class="eyebrow">AI Creative Studio</div><h1>Local video workflow</h1><div class="sub">Edit narration, generate voice, preview, then render.</div></div></div>
+    <div class="badge"><span id="health" class="dot"></span><span id="healthText">Connecting to local studio…</span></div>
+  </header>
+  <div class="grid">
+    <section class="card">
+      <h2>1. Narration & voice</h2><p class="hint">Edit the project narration. A blank line separates paragraphs; use <code>|</code> to split subtitle phrases.</p>
+      <div class="field"><label for="voice">Voice</label><select id="voice"><option value="en-US-ChristopherNeural">Christopher · English (US)</option><option value="en-US-JennyNeural">Jenny · English (US)</option><option value="zh-CN-YunxiNeural">Yunxi · Mandarin Chinese</option></select></div>
+      <div class="field"><label for="script">Narration script · script/narration.txt</label><textarea id="script" spellcheck="false" aria-label="Narration script"></textarea></div>
+      <div class="row"><button id="save" class="btn quiet">Save narration</button><button id="voiceAction" class="btn primary">Generate voice & timeline</button></div>
+      <p id="message" class="notice" role="status" aria-live="polite"></p>
+    </section>
+    <aside class="card">
+      <h2>2. Build your video</h2><p class="hint">Create the voice track first. Preview and final render use the saved narration and generated audio.</p>
+      <div class="actions">
+        <button id="previewAction" class="btn action"><strong>▶ Render preview</strong><span>Quick 60-frame check</span></button>
+        <button id="renderAction" class="btn action primary"><strong>🎞 Render final MP4</strong><span>Full composition</span></button>
+        <button id="refresh" class="btn action"><strong>↻ Refresh status</strong><span>Check outputs and logs</span></button>
+      </div>
+      <div class="steps">
+        <div class="step"><span>Dependencies installed</span><strong id="deps" class="state">Checking…</strong></div>
+        <div class="step"><span>Voiceover audio</span><strong id="audio" class="state">Checking…</strong></div>
+        <div class="step"><span>Generated timeline</span><strong id="timeline" class="state">Checking…</strong></div>
+        <div class="step"><span>Preview render</span><strong id="preview" class="state">Checking…</strong></div>
+        <div class="step"><span>Final video</span><strong id="render" class="state">Checking…</strong></div>
+      </div>
+      <div class="job"><span>Workflow</span><span id="jobStatus" class="job-status">Idle</span></div>
+      <div id="log" class="log" aria-label="Workflow log" aria-live="polite">Waiting for local studio…</div>
+      <div id="videoWrap" class="preview" hidden><video id="video" controls preload="metadata"></video></div>
+      <div class="foot">Actions run only the project’s fixed PowerShell tasks on this computer. Keep the terminal open while this page is in use.</div>
+    </aside>
+  </div>
+</main>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const voice = $('voice');
+  const scriptField = $('script');
+  let busy = false;
+  let currentVideo = '';
+  voice.value = localStorage.getItem('studio-voice') || voice.value;
+  voice.addEventListener('change', () => localStorage.setItem('studio-voice', voice.value));
+
+  function message(text, kind='') { $('message').textContent = text; $('message').className = `notice ${kind}`; }
+  function setFile(id, ready, label) { $(id).textContent = ready ? 'Ready' : label; $(id).className = `state ${ready ? 'ready' : 'missing'}`; }
+  async function api(url, options={}) {
+    const res = await fetch(url, {...options, headers: {'Content-Type':'application/json', ...(options.headers || {})}});
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+    return data;
+  }
+  async function saveScript(showMessage=true) {
+    await api('/api/script', {method:'PUT', body:JSON.stringify({script:scriptField.value})});
+    if (showMessage) message('Narration saved. Generate the voiceover to update audio and subtitle timing.', 'success');
+  }
+  async function run(action) {
+    try {
+      if (action === 'voice') await saveScript(false);
+      await api('/api/run', {method:'POST', body:JSON.stringify({action, voice:voice.value})});
+      message(action === 'voice' ? 'Voice and timeline generation started.' : `${action === 'preview' ? 'Preview' : 'Final render'} started.`, 'success');
+      await refresh();
+    } catch (e) { message(e.message, 'error'); }
+  }
+  async function refresh() {
+    try {
+      const data = await api('/api/status');
+      if (document.activeElement !== scriptField) scriptField.value = data.script;
+      $('health').className = 'dot ok'; $('healthText').textContent = 'Local studio connected';
+      setFile('deps', data.files.dependencies, 'Run npm install');
+      setFile('audio', data.files.audio, 'Generate voice');
+      setFile('timeline', data.files.timeline, 'Generate voice');
+      setFile('preview', data.files.preview, 'Not rendered');
+      setFile('render', data.files.render, 'Not rendered');
+      busy = data.job.running;
+      for (const id of ['save','voiceAction','previewAction','renderAction']) $(id).disabled = busy || (id !== 'voiceAction' && !data.files.dependencies);
+      const job = data.job;
+      const status = $('jobStatus');
+      status.className = `job-status ${job.running ? 'running' : job.exitCode === 0 ? 'success' : job.exitCode !== null ? 'failed' : ''}`;
+      status.innerHTML = job.running ? '<span class="spin"></span>' + (job.action || 'Working') : job.exitCode === 0 ? 'Completed' : job.exitCode !== null ? `Failed · exit ${job.exitCode}` : 'Idle';
+      $('log').textContent = data.logs.length ? data.logs.map(x => `[${new Date(x.at).toLocaleTimeString()}] ${x.text}`).join('\n') : 'No workflow output yet.';
+      $('log').scrollTop = $('log').scrollHeight;
+      const video = data.files.render ? '/renders/explainer.mp4' : data.files.preview ? '/renders/preview.mp4' : '';
+      if (video && video !== currentVideo) { currentVideo = video; $('video').src = video; $('videoWrap').hidden = false; }
+    } catch (e) {
+      $('health').className = 'dot'; $('healthText').textContent = 'Studio server unavailable';
+      $('log').textContent = e.message + '\nStart the app with .\\run.ps1 app, then open the local URL printed in the terminal.';
+    }
+  }
+  $('save').addEventListener('click', () => saveScript().catch(e => message(e.message, 'error')));
+  $('voiceAction').addEventListener('click', () => run('voice'));
+  $('previewAction').addEventListener('click', () => run('preview'));
+  $('renderAction').addEventListener('click', () => run('render'));
+  $('refresh').addEventListener('click', refresh);
+  refresh(); setInterval(refresh, 2000);
+</script>
+</body>
+</html>
